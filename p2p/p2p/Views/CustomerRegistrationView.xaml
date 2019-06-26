@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:p2p.Controls"
+             mc:Ignorable="d"
+             x:Class="p2p.Views.CustomerRegistrationView">
+
+
+
+    <ContentPage.Content>
+
+
+
+
+        <ScrollView BackgroundColor="#367fa9" x:Name="TheScrollView">
+            <ScrollView.Content>
+
+                <StackLayout  Padding="10, 10, 10, 10" x:Name="ST"  >
+
+                    <StackLayout.Children>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout.Children>
+
+                                <Image Source="icon.png" />
+                                <Label Text = "Register As A Customer" 
+                                      FontSize="Large" 
+                                      FontAttributes = "None"
+                                      TextColor = "White"
+                                      VerticalOptions="Center"                              
+                                      HorizontalOptions="StartAndExpand" />
+                            </StackLayout.Children>
+                        </StackLayout>
+
+
+
+                        <StackLayout Padding="6, 40, 6, 6" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
+                            <StackLayout.Children>
+
+
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding FirstName, Mode=TwoWay}" 
+                                    Placeholder="First Name"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="FirstName"
+                                    Margin="0,0,0,10" />
+
+                                <Label  x:Name="FirstNameEmptyError" Grid.Row="1" Text="{Binding FirstNameEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                <Label x:Name="FirstNameIncorrect" Grid.Row="1" Text="{Binding FirstNameIncorrect, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6"/>                                
+
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding LastName, Mode=TwoWay}" 
+                                    Placeholder="Last Name"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="LastName"
+                                    Margin="0,0,0,10" />
+
+                                <Label  x:Name="LastNameEmptyError" Grid.Row="1" Text="{Binding LastNameEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                <Label x:Name="LastNameIncorrect" Grid.Row="1" Text="{Binding LastNameIncorrect, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6"/>
+
+                                <local:CustomPicker x:Name="Gender" Title="Select Gender" HeightRequest="37" Margin="0,0,0,10" TextColor="Black" HorizontalOptions="FillAndExpand" BackgroundColor="White" SelectedIndex="{Binding SelectedGender, Mode=TwoWay}" >
+                                    <Picker.Items>
+                                        <x:String>Male</x:String>
+                                        <x:String>Female</x:String>
+                                    </Picker.Items>
+                                    <!--<Picker.SelectedIndex>0</Picker.SelectedIndex>-->
+                                </local:CustomPicker>
+
+                                <Label  x:Name="GenderEmptyError" Grid.Row="1" Text="{Binding GenderEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+
+                                <!--PlaceholderColor="{Binding Source={x:Reference Name=BirthDate}, Path=PlaceholderColor}"-->
+                                <local:CustomDatePicker x:Name="BirthDate" 
+                                        Placeholder="Birth Date" 
+                                        BackgroundColor="White" 
+                                        HeightRequest="37" 
+                                        TextColor="Black" 
+                                        Margin="0,0,0,10"
+                                        Format="d"
+                                        MinimumDate="01/01/1900"
+                                        Date="{Binding BirthDate, Mode=TwoWay}"                
+                                                        
+                                />
+
+
+
+                                <Label  x:Name="BirthDateEmptyError" Grid.Row="1" Text="{Binding BirthDateEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+
+
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding PassportId, Mode=TwoWay}" 
+                                    Placeholder="Passport ID"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="PassportId"
+                                    Margin="0,0,0,10" />
+
+                                <Label  x:Name="PassportIdEmptyError" Grid.Row="1" Text="{Binding PassportIdEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding Phone1, Mode=TwoWay}" 
+                                    Placeholder="Phone Number"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="Phone1"
+                                    Margin="0,0,0,10" />
+
+                                <Label  x:Name="Phone1EmptyError" Grid.Row="1" Text="{Binding Phone1EmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                <Label x:Name="Phone1Incorrect" Grid.Row="1" Text="{Binding Phone1Incorrect, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6"/>
+
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding Company, Mode=TwoWay}" 
+                                    Placeholder="Company"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="Company"
+                                    Margin="0,0,0,10" />
+
+                                <local:CustomEditor
+                                    Placeholder="Address"
+                                    Text="{Binding Address1, Mode=TwoWay}"
+                                    IsSpellCheckEnabled="False"
+                                    IsTextPredictionEnabled="False"
+                                    HeightRequest="67"
+                                    x:Name="Address1"
+                                    Margin="0,0,0,10"
+                                    />
+
+                                <Label x:Name="Address1EmptyError" Grid.Row="1" Text="{Binding Address1EmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                
+
+                                <!--TextChanged="txtEmail_TextChanged"-->
+                                <local:CustomEntry BackgroundColor="White" 
+                                    Text="{Binding Email, Mode=TwoWay}" 
+                                    Placeholder="Email"
+                                    PlaceholderColor="Gray"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    x:Name="txtEmail"
+                                    Margin="0,0,0,10"                                />
+
+                                <Label  x:Name="EmailEmptyError" Grid.Row="1" Text="{Binding EmailEmptyError, Mode=TwoWay}" 
+                                        TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                <Label x:Name="EmailIncorrect" Grid.Row="1" Text="{Binding EmailIncorrect, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6"/>
+
+
+                                <!-- TextChanged="txtPassword_PasswordChanged"-->
+                                <local:CustomEntry BackgroundColor="White"
+                                    Text="{Binding Password, Mode=TwoWay}" 
+                                    PlaceholderColor="Gray"
+                                    Placeholder="Password"
+                                    TextColor="Gray"
+                                    HeightRequest="37"
+                                    IsPassword="True"
+                                    x:Name="txtPassword" 
+                                    Margin="0,0,0,10"                                  />
+
+                                <Label x:Name="PasswordEmptyError" Grid.Row="1" Text="{Binding PasswordEmptyError, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+                                <Label x:Name="PasswordShortError" Grid.Row="1" Text="{Binding PasswordShortError, Mode=TwoWay}" 
+                                     TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+
+                                <!-- TextChanged="txtPasswordConfirm_PasswordChanged" -->
+                                <local:CustomEntry BackgroundColor="White"
+                                    Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                                    PlaceholderColor="Gray"
+                                    Placeholder="Confirm Password"
+                                    TextColor="Black"
+                                    HeightRequest="37"
+                                    IsPassword="True"
+                                    x:Name="txtPasswordConfirm" 
+                                    Margin="0,0,0,10"                                 />
+
+                                <Label x:Name="PasswordNotMatch" Grid.Row="1" Text="{Binding PasswordNotMatch, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,-6" />
+
+
+                            </StackLayout.Children>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                            <!--
+                            <controls:CheckBox
+
+                           DefaultText="ვეთანხმები"
+                           HorizontalOptions="FillAndExpand"
+                           x:Name="chkTerms"  
+                           TextColor="Black"
+                            FontSize="14"
+                            />
+                            -->
+
+                            <!--  Toggled="Switch_Toggled"-->
+                            <Switch
+                                
+                               
+                                IsToggled="{Binding Terms, Mode=TwoWay}"
+                                x:Name="Switch"
+                                Margin="7,2,5,0"
+                                />
+                            <Label Text="Agree"  TextColor="Black"  FontSize="14" Margin="0,5,5,0"   />
+
+
+
+                        </StackLayout>
+
+                        <StackLayout Padding="6" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
+                            <StackLayout.Children>
+
+                                <Label x:Name="TermsError" Grid.Row="1" Text="{Binding TermsError, Mode=TwoWay}" 
+                                    TextColor="Red" IsVisible="False" Margin="0,-19,0,0" />
+
+                            </StackLayout.Children>
+                        </StackLayout>
+
+                        <StackLayout Padding="6" Orientation="Vertical" HorizontalOptions="Center" WidthRequest="170">
+                            <StackLayout.Children>
+                                <Button x:Name="RegButton" Text="Submit" Command="{Binding SubmitCommand}" FontSize="16"  />
+
+
+                            </StackLayout.Children>
+
+
+
+                        </StackLayout>
+
+
+
+                    </StackLayout.Children>
+                </StackLayout>
+
+            </ScrollView.Content>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
