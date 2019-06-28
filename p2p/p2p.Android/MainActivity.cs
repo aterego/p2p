@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Ninject;
+using AndroidX.Work;
 
 namespace p2p.Droid
 {
@@ -29,6 +30,10 @@ namespace p2p.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            PeriodicWorkRequest taxWorkRequest = PeriodicWorkRequest.Builder.From<TokenWorker>(TimeSpan.FromMinutes(17)).Build();
+            WorkManager.Instance.Enqueue(taxWorkRequest);
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
