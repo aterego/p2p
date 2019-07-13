@@ -19,8 +19,8 @@ namespace p2p.Services
         /// <param name="username">Username.</param>
         Task<SessionToken> RefreshTokenAsync(string refreshToken, string username);
 
-        Task<string> GetContentCustomerAsync(string accessToken, Test test);
-        Task<string> GetContentProfiAsync(string accessToken, Test test);
+        Task<string> GetContentCustomerAsync(string accessToken);
+        Task<string> GetContentProfiAsync(string accessToken);
         /// <summary>
         /// Register Customer.
         /// </summary>

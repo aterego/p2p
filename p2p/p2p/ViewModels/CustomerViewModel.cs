@@ -45,7 +45,7 @@ namespace p2p.ViewModels
             //Test test = (Test) App.Container.GetService(typeof(Test));
           
 
-            Content =  await _backendProxy.GetContentCustomerAsync(_backendSessionManager.Session.AccessToken, _backendSessionManager.Testik);
+            Content =  await _backendProxy.GetContentCustomerAsync(_backendSessionManager.Session.AccessToken);
 
         }
     }

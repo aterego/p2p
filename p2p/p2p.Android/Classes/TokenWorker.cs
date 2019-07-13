@@ -38,7 +38,7 @@ namespace p2p.Droid
 
             var taxReturn = CalculateTaxes();
             //Android.Util.Log.Debug("CalculatorWorker", $"Your Tax Return is: {taxReturn}");
-            SaveTextAsync("testWork.txt", DateTime.Now.ToString() +  $", Your Tax Return is: {taxReturn}\n").Wait();
+            //SaveTextAsync("testWork.txt", DateTime.Now.ToString() +  $", Your Tax Return is: {taxReturn}\n").Wait();
             return Result.InvokeSuccess();
         }
 

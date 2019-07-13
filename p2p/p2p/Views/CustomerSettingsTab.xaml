@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helpers="clr-namespace:p2p.Helpers"
+             mc:Ignorable="d"
+             x:Class="p2p.Views.CustomerSettingsTab">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:LevelToMarginConverter x:Key="LevelConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+        <Label Text="Selected Categories" FontSize="18" Margin="5,10,5,10" />
+        <ListView ItemsSource="{Binding DataList}" Margin="20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout VerticalOptions="CenterAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Data.ParentId, Mode=Default, Converter={StaticResource LevelConverter}}" /><Label Text="{Binding Data.Name}"  />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Data.ParentId, Mode=Default, Converter={StaticResource LevelConverter}}" /><Label Text="{Binding Data.Description}" FontSize="10" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Switch IsToggled="{Binding Selected}" Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            <ListView.Footer>
+                <Button Text="Finished" Command="{Binding FinishCommand}" />
+            </ListView.Footer>
+           
+        </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

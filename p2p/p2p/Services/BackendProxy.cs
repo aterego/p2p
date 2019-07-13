@@ -33,12 +33,12 @@ namespace p2p.Services
                 //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 JObject jsonObject = new JObject();
-                //jsonObject.Add("email", username);
-                //jsonObject.Add("password", password);
+                jsonObject.Add("email", username);
+                jsonObject.Add("password", password);
                 //jsonObject.Add("email", "mytest8@test.com");
                 //jsonObject.Add("password", "123456");
-                jsonObject.Add("email", "profi@test.com");
-                jsonObject.Add("password", "1234567");
+                //jsonObject.Add("email", "profi@test.com");
+                //jsonObject.Add("password", "1234567");
 
                 string jsonData = JsonConvert.SerializeObject(jsonObject); //@"{""email"" : ""mytest8@test.com"", ""password"" : ""123456""}";
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -137,7 +137,7 @@ namespace p2p.Services
             });
         }
 
-        public Task<string> GetContentCustomerAsync(string accessToken, Test test)
+        public Task<string> GetContentCustomerAsync(string accessToken)
         {
             return Task<string>.Run(async () =>
             {
@@ -159,7 +159,7 @@ namespace p2p.Services
                         returnVal = await response.Content.ReadAsStringAsync();
 
 
-                        return returnVal + test.Clock.ToString();
+                        return returnVal + accessToken;
 
                     }
                 }
@@ -174,7 +174,7 @@ namespace p2p.Services
 
         }
 
-        public Task<string> GetContentProfiAsync(string accessToken, Test test)
+        public Task<string> GetContentProfiAsync(string accessToken)
         {
             return Task<string>.Run(async () =>
             {
@@ -196,7 +196,7 @@ namespace p2p.Services
                         returnVal = await response.Content.ReadAsStringAsync();
 
 
-                        return returnVal + test.Clock.ToString();
+                        return returnVal + accessToken;
 
                     }
                 }

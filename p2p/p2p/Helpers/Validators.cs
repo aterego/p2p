@@ -10,7 +10,7 @@ namespace p2p.Helpers
     public class Validators
     {
 
-        public static string ServerBaseUrl { get; set; } = "http://192.168.1.16:5002";
+        public static string ServerBaseUrl { get; set; } = "http://192.168.1.10:5002";
         //"http://localhost:8080";
 
         public static async Task<bool> ConnectionAvailableAsync()
