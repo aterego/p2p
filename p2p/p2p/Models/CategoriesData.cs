@@ -7,6 +7,7 @@
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public string Prices { get; set; }
 
         public CategoriesData Clone()
         {
@@ -15,7 +16,8 @@
                 Id = Id,
                 ParentId = ParentId,
                 Name = Name,
-                Description = Description
+                Description = Description,
+                Prices = Prices
             };
 
         }

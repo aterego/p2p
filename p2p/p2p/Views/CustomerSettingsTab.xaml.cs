@@ -130,6 +130,12 @@ namespace p2p.Views
             InitializeComponent();
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ((CustomerSettingsViewModel)BindingContext).OnAppearing();
+        }
     }
 }
 

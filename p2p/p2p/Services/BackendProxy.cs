@@ -358,6 +358,50 @@ namespace p2p.Services
             //});
         }
 
+        public Task<CategoriesData> GetCategoriesAsync(string accessToken)
+        {
+            return Task<CategoriesData>.Run(async () =>
+            {
+                var url = string.Format("{0}/api/categories/allwprices", Validators.ServerBaseUrl);
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Accept.Clear();
+                string authorizationValue = "Bearer " + accessToken;
+                client.DefaultRequestHeaders.Add("Authorization", authorizationValue);
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+                var returnVal = "";
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync("");
+                    response.EnsureSuccessStatusCode();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        returnVal = await response.Content.ReadAsStringAsync();
+
+                        JArray albums = JArray.Parse(returnVal) as JArray;
+                        //JObject s =     (returnVal);
+                        foreach(var a in albums)
+                        {
+                            Debug.WriteLine(a.ToString());
+                        }
+
+                        return new CategoriesData { Id = 1 };
+
+                        //return returnVal + accessToken;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var msg = ex.Message;
+                    //returnVal = null;
+                }
+
+                return new CategoriesData { Id = 1 };
+                
+            });
+
+        }
     }
 }

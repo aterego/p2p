@@ -31,6 +31,12 @@ namespace p2p.Services
         /// </summary>
         /// <param name="arr">string array.</param>
         Task<RegistrationResponse> RegisterProfiAsync(string[] arr);
-        
+        /// <summary>
+        /// Get all Categories with Prices.
+        /// </summary>
+        /// <param name="accessToken">accessToken.</param>
+        Task<CategoriesData> GetCategoriesAsync(string accessToken);
+
+
     }
 }

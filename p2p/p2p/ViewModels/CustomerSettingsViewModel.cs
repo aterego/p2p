@@ -1,5 +1,6 @@
 ﻿using p2p.Helpers;
 using p2p.Models;
+using p2p.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +12,15 @@ namespace p2p.ViewModels
     public class CustomerSettingsViewModel
     {
         public Action<string[]> DisplaySelected;
+        private IBackendProxy _backendProxy;
+        private IBackendSessionManager _backendSessionManager;
 
-        public CustomerSettingsViewModel()
+        public CustomerSettingsViewModel(IBackendProxy backendProxy, IBackendSessionManager backendSessionManager)
         {
+            _backendProxy = backendProxy;
+            _backendSessionManager = backendSessionManager;
 
-            
+           
 
             DataList =  new List<SelectableData<CategoriesData>>()
             {
@@ -25,6 +30,11 @@ namespace p2p.ViewModels
                 new SelectableData<CategoriesData>() { Data = new CategoriesData() {Id = 4, ParentId=3, Name = "Test4", Description = "Description4" } },
                 new SelectableData<CategoriesData>() { Data = new CategoriesData() {Id = 5, ParentId=0, Name = "Test5", Description = "Description5" }, Selected = true }
             }; 
+        }
+
+        public async void OnAppearing()
+        {
+            var data =  await _backendProxy.GetCategoriesAsync(_backendSessionManager.Session.AccessToken);
         }
 
         // As example if you need to convert
